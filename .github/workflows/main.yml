@@ -93,7 +93,7 @@ jobs:
           ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
 
       - name: Building
-        run: haxelib run lime build project.xml android
+        run: haxelib run lime build Project.xml android
         env:
           cert_pass: nullfunni
           cert_alias_pass: nullfunni
