@@ -5,8 +5,8 @@ import objects.Character;
 import psychlua.FunkinLua;
 import psychlua.CustomSubstate;
 
-#if HSCRIPT_ALLOWED
 import tea.SScript;
+
 class HScript extends SScript
 {
 	public var parentLua:FunkinLua;
@@ -361,4 +361,3 @@ class CustomFlxColor
 		return cast FlxColor.fromString(str);
 	}
 }
-#endif
