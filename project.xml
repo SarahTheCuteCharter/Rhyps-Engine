@@ -15,10 +15,19 @@
     <haxelib name="lime" />
     <haxelib name="openfl" />
     <haxelib name="flixel" />
+    <haxelib name="flixel-ui" />
     <haxelib name="flixel-addons" />
     <haxelib name="hxcpp" />
-    <haxelib name="newgrounds" />
+    <haxelib name="tjson" />
+    <haxelib name="hxjsonast" />
     <haxelib name="hscript" />
+    <haxelib name="newgrounds" />
+    <haxelib name="SScript" />
+    <haxelib name="androiddialogs" />
+    <haxelib name="devicelanguage" />
+    <haxelib name="discord_rpc" />
+    <haxelib name="linc_luajit" />
+    <haxelib name="hxCodec" />
 
     <set name="android" if="android" />
     <set name="mobile" if="android || ios" />
