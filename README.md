@@ -40,21 +40,21 @@ We're using the Psych Engine v0.71h as a base and have improved it even further!
 * **Android Compatibility** — Support of the first Psych NKL-4ever Engine.
 * **Psych Engine but Better' Feature** - Supported Update
 
-# Credits:
-* Shadow Mario - Programmer
-* RiverOaken - Artist
-* Yoshubs - Assistant Programmer
+# Credits
+* **Shadow Mario** - Programmer
+* **RiverOaken** - Artist
+* **Yoshubs** - Assistant Programmer
 
 ## Special Thanks
-* bbpanzu - Ex-Programmer
-* Yoshubs - New Input System
-* SqirraRNG - Crash Handler and Base code for Chart Editor's Waveform
-* KadeDev - Fixed some cool stuff on Chart Editor and other PRs
-* iFlicky - Composer of Psync and Tea Time, also made the Dialogue Sounds
-* PolybiusProxy - .MP4 Video Loader Library (hxCodec)
-* Keoiki - Note Splash Animations
-* Smokey - Sprite Atlas Support
-* Nebula the Zorua - LUA JIT Fork and some Lua reworks
+* **bbpanzu** - Ex-Programmer
+* **Yoshubs** - New Input System
+* **SqirraRNG** - Crash Handler and Base code for Chart Editor's Waveform
+* **KadeDev** - Fixed some cool stuff on Chart Editor and other PRs
+* **iFlicky** - Composer of Psync and Tea Time, also made the Dialogue Sounds
+* **PolybiusProxy** - .MP4 Video Loader Library (hxCodec)
+* **Keoiki** - Note Splash Animations
+* **Smokey** - Sprite Atlas Support
+* **Nebula the Zorua** - LUA JIT Fork and some Lua reworks
 
 # Awards/Achievements
 The engine comes with 16 example achievements that you can mess with and learn how it works (Check Achievements.hx and search for "checkForAchievement" on PlayState.hx)
