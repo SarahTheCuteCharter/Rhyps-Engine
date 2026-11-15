@@ -95,6 +95,8 @@ On Preferences you can toggle Downscroll, Middlescroll, Anti-Aliasing, Framerate
 * **Pelicirihu's Top Charts**: Collection of Sanduiche-Plays's Harder and Impossibles Charts.
 * **Dave and Dave Charts**: SarahTheCharter's Extreme Dave Charts
 
+  Thanks for use Psych NKL-4ever Engine!
+
 ## Documentation
 * [Installation Guide](docs/installation.md)
 * [Chart Editor](docs/chart-editor.md)
