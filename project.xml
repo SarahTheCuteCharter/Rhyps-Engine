@@ -1,10 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project>
-	<!-- _________________________ Application Settings _________________________ -->
+    <meta title="Friday Night Funkin': NKL-4ever" package="com.sarahthecharter.nkl4ever" version="0.2.8" company="ShadowMario" />
 
-	<app title="Friday Night Funkin': NKL-4ever" file="NKL-4ever" packageName="com.sarahthecharter.nkl4ever" package="com.sarahthecharter.nkl4ever" main="Main" version="0.2.8" company="ShadowMario" />
+    <app main="Main" file="NKL-4ever" path="export" preloader="Preloader" />
 
-	<!--Switch Export with Unique ApplicationID and Icon-->
-	<set name="APP_ID" value="0x0100f6c013bbc000" />
+    <window width="1280" height="720" fps="60" hardware="true" allow-high-dpi="true" />
+    <window if="android" orientation="sensorLandscape" />
 
+    <source path="source" />
+
+    <assets path="assets" rename="assets" include="*" />
+    <assets path="art" rename="art" include="*" />
+
+    <haxelib name="lime" />
+    <haxelib name="openfl" />
+    <haxelib name="flixel" />
+    <haxelib name="flixel-addons" />
+    <haxelib name="hxcpp" />
+    <haxelib name="newgrounds" />
+    <haxelib name="hscript" />
+
+    <set name="android" if="android" />
+    <set name="mobile" if="android || ios" />
 </project>
