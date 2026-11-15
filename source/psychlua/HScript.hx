@@ -232,10 +232,6 @@ class HScript extends SScript
 					FunkinLua.luaTrace(funk.hscript.origin + ":" + calledFunc + " - " + e, false, false, FlxColor.RED);
 				return null;
 			}
-			else if (funk.hscript.returnValue != null)
-			{
-				return funk.hscript.returnValue;
-			}
 			#else
 			FunkinLua.luaTrace("runHaxeCode: HScript isn't supported on this platform!", false, false, FlxColor.RED);
 			#end
@@ -269,11 +265,6 @@ class HScript extends SScript
 			var c:Dynamic = Type.resolveClass(str + libName);
 			if (c == null)
 				c = Type.resolveEnum(str + libName);
-
-			#if SScript
-			if (c != null)
-				SScript.globalVariables[libName] = c;
-			#end
 
 			#if SScript
 			if (funk.hscript != null)
@@ -353,4 +344,4 @@ class CustomFlxColor
 		return cast FlxColor.fromString(str);
 	}
 }
-#end
+#endif
