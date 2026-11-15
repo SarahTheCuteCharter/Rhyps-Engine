@@ -65,6 +65,7 @@ jobs:
           haxelib install hscript
           haxelib install SScript 3.0.0
           haxelib set SScript 3.0.0
+          haxelib install newgrounds
           haxelib git hxCodec https://github.com/SPLCoding/hxCodec-but-it-works-xd.git
           haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc
           haxelib git linc_luajit https://github.com/PsychExtendedThings/linc_luajit
