@@ -17,14 +17,16 @@
     <haxelib name="flixel" />
     <haxelib name="flixel-ui" />
     <haxelib name="flixel-addons" />
+    <haxelib name="flixel-ui" />
     <haxelib name="hxcpp" />
     <haxelib name="tjson" />
     <haxelib name="hxjsonast" />
     <haxelib name="hscript" />
+    <haxelib name="tjson" />
     <haxelib name="newgrounds" />
     <haxelib name="SScript" />
-    <haxelib name="androiddialogs" />
     <haxelib name="devicelanguage" />
+    <haxelib name="androiddialogs" />
     <haxelib name="discord_rpc" />
     <haxelib name="linc_luajit" />
     <haxelib name="hxCodec" />
