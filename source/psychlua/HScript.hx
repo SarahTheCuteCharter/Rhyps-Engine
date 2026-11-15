@@ -347,4 +347,4 @@ class CustomFlxColor
 		return cast FlxColor.fromString(str);
 	}
 }
-#endif
+#end
