@@ -20,9 +20,6 @@
     <haxelib name="flixel-ui" />
     <haxelib name="hxcpp" />
     <haxelib name="tjson" />
-    <haxelib name="hxjsonast" />
-    <haxelib name="hscript" />
-    <haxelib name="tjson" />
     <haxelib name="newgrounds" />
     <haxelib name="SScript" />
     <haxelib name="devicelanguage" />
