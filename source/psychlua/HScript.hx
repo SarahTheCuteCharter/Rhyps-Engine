@@ -51,12 +51,14 @@ class HScript extends SScript
 	}
 
 	public var origin:String;
-	override public function new(?parent:FunkinLua, ?file:String)
+	public function new(?parent:FunkinLua, ?file:String)
 	{
 		if (file == null)
 			file = '';
 	
-		super(file, false, false);
+		// SScript constructors vary across versions; the single-argument form is
+		// accepted by both the older and current APIs used by this project.
+		super(file);
 		parentLua = parent;
 		if (parent != null)
 			origin = parent.scriptName;
@@ -294,14 +296,6 @@ class HScript extends SScript
 		});
 		#end
 	}
-
-	override public function kill()
-	{
-		origin = null;
-		parentLua = null;
-
-		super.kill();
-	}
 }
 
 class CustomFlxColor
@@ -353,4 +347,4 @@ class CustomFlxColor
 		return cast FlxColor.fromString(str);
 	}
 }
-#end
+#endif
