@@ -6,8 +6,8 @@ import backend.Achievements;
 import flixel.FlxObject;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.effects.FlxFlicker;
-
 import flixel.input.keyboard.FlxKey;
+import flixel.util.FlxTimer;
 import lime.app.Application;
 
 import objects.AchievementPopup;
@@ -16,13 +16,13 @@ import options.OptionsState;
 
 class MainMenuState extends MusicBeatState
 {
-	public static var psychEngineVersion:String = '0.7.1h'; //This is also used for Discord RPC
+	public static var psychEngineVersion:String = '0.7.1h';
 	public static var curSelected:Int = 0;
 
 	var menuItems:FlxTypedGroup<FlxSprite>;
 	private var camGame:FlxCamera;
 	private var camAchievement:FlxCamera;
-	
+
 	var optionShit:Array<String> = [
 		'story_mode',
 		'freeplay',
@@ -36,6 +36,18 @@ class MainMenuState extends MusicBeatState
 	var magenta:FlxSprite;
 	var camFollow:FlxObject;
 
+	// NKL-4ever FunnyTips System
+	var tipTextMargin:Float = 10;
+	var tipTextScrolling:Bool = false;
+	var tipBackground:FlxSprite;
+	var tipText:FlxText;
+	var tipTimer:FlxTimer = new FlxTimer();
+	var isTweening:Bool = false;
+	var lastString:String = '';
+
+	var tipsArray:Array<String> = [];
+	var canDoTips:Bool = true;
+
 	override function create()
 	{
 		#if MODS_ALLOWED
@@ -44,7 +56,6 @@ class MainMenuState extends MusicBeatState
 		Mods.loadTopMod();
 
 		#if desktop
-		// Updating Discord Rich Presence
 		DiscordClient.changePresence("In the Menus", null);
 		#end
 
@@ -82,21 +93,16 @@ class MainMenuState extends MusicBeatState
 		magenta.visible = false;
 		magenta.color = 0xFFfd719b;
 		add(magenta);
-		
-		// magenta.scrollFactor.set();
 
 		menuItems = new FlxTypedGroup<FlxSprite>();
 		add(menuItems);
 
 		var scale:Float = 1;
-		/*if(optionShit.length > 6) {
-			scale = 6 / optionShit.length;
-		}*/
 
 		for (i in 0...optionShit.length)
 		{
 			var offset:Float = 108 - (Math.max(optionShit.length, 4) - 4) * 80;
-			var menuItem:FlxSprite = new FlxSprite(0, (i * 140)  + offset);
+			var menuItem:FlxSprite = new FlxSprite(0, (i * 140) + offset);
 			menuItem.antialiasing = ClientPrefs.data.antialiasing;
 			menuItem.scale.x = scale;
 			menuItem.scale.y = scale;
@@ -108,55 +114,135 @@ class MainMenuState extends MusicBeatState
 			menuItem.screenCenter(X);
 			menuItems.add(menuItem);
 			var scr:Float = (optionShit.length - 4) * 0.135;
-			if(optionShit.length < 6) scr = 0;
+			if (optionShit.length < 6) scr = 0;
 			menuItem.scrollFactor.set(0, scr);
-			//menuItem.setGraphicSize(Std.int(menuItem.width * 0.58));
 			menuItem.updateHitbox();
 		}
 
 		FlxG.camera.follow(camFollow, null, 0);
 
-		var versionShit:FlxText = new FlxText(12, FlxG.height - 44, 0, "Psych Engine v" + psychEngineVersion, 12);
-		versionShit.scrollFactor.set();
-		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		add(versionShit);
-		var versionShit:FlxText = new FlxText(12, FlxG.height - 24, 0, "Friday Night Funkin' v" + Application.current.meta.get('version'), 12);
+		var versionShit:FlxText = new FlxText(12, FlxG.height - 44, 0, "Psych NKL-4ever Engine", 12);
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
 
-		// NG.core.calls.event.logEvent('swag').send();
+		var fnfVersion:FlxText = new FlxText(12, FlxG.height - 24, 0, "Friday Night Funkin' v" + Application.current.meta.get('version'), 12);
+		fnfVersion.scrollFactor.set();
+		fnfVersion.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		add(fnfVersion);
+
+		// NKL-4ever FunnyTips initialization
+		tipsArray = CoolUtil.coolTextFile(Paths.txt('funnyTips'));
+		canDoTips = tipsArray != null && tipsArray.length > 0;
+
+		if (!canDoTips)
+			trace('NKL-4ever FunnyTips: no tips found!');
+
+		tipBackground = new FlxSprite();
+		tipBackground.scrollFactor.set();
+		tipBackground.makeGraphic(FlxG.width, 54, FlxColor.BLACK);
+		tipBackground.alpha = 0.65;
+		tipBackground.visible = canDoTips;
+		add(tipBackground);
+
+		tipText = new FlxText(0, 0, FlxG.width - tipTextMargin * 2, "");
+		tipText.scrollFactor.set();
+		tipText.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT);
+		tipText.visible = canDoTips;
+		add(tipText);
 
 		changeItem();
 
 		#if ACHIEVEMENTS_ALLOWED
 		Achievements.loadAchievements();
 		var leDate = Date.now();
-		if (leDate.getDay() == 5 && leDate.getHours() >= 18) {
+		if (leDate.getDay() == 5 && leDate.getHours() >= 18)
+		{
 			var achieveID:Int = Achievements.getAchievementIndex('friday_night_play');
-			if(!Achievements.isAchievementUnlocked(Achievements.achievementsStuff[achieveID][2])) { //It's a friday night. WEEEEEEEEEEEEEEEEEE
+			if (!Achievements.isAchievementUnlocked(Achievements.achievementsStuff[achieveID][2]))
+			{
 				Achievements.achievementsMap.set(Achievements.achievementsStuff[achieveID][2], true);
 				giveAchievement();
 				ClientPrefs.saveSettings();
 			}
 		}
 		#end
-		
+
 		#if android
 		addVirtualPad(UP_DOWN, A_B_E);
 		#end
 
 		super.create();
+
+		if (canDoTips)
+		{
+			changeTipText();
+			tipTextStartScrolling();
+		}
 	}
 
 	#if ACHIEVEMENTS_ALLOWED
-	// Unlocks "Freaky on a Friday Night" achievement
-	function giveAchievement() {
+	function giveAchievement()
+	{
 		add(new AchievementPopup('friday_night_play', camAchievement));
 		FlxG.sound.play(Paths.sound('confirmMenu'), 0.7);
 		trace('Giving achievement "friday_night_play"');
 	}
 	#end
+
+	// NKL-4ever FunnyTips: choose a tip and prepare its text.
+	function changeTipText()
+	{
+		if (!canDoTips || tipsArray == null || tipsArray.length == 0)
+			return;
+
+		var selectedText:String = tipsArray[FlxG.random.int(0, tipsArray.length - 1)].replace('--', '\n');
+
+		if (tipsArray.length > 1)
+		{
+			var attempts:Int = 0;
+			while (selectedText == lastString && attempts < 20)
+			{
+				selectedText = tipsArray[FlxG.random.int(0, tipsArray.length - 1)].replace('--', '\n');
+				attempts++;
+			}
+		}
+
+		lastString = selectedText;
+		tipText.text = selectedText;
+		tipText.updateHitbox();
+		tipText.x = FlxG.width + tipTextMargin;
+		tipText.y = FlxG.height - tipText.height - tipTextMargin - 8;
+		tipText.alpha = 0;
+		tipTextScrolling = false;
+
+		FlxTween.cancelTweensOf(tipText);
+		FlxTween.tween(tipText, {alpha: 1}, 0.5, {
+			ease: FlxEase.linear,
+			onComplete: function(twn:FlxTween)
+			{
+				isTweening = false;
+			}
+		});
+	}
+
+	// NKL-4ever FunnyTips: wait, then scroll the tip across the screen.
+	function tipTextStartScrolling()
+	{
+		if (!canDoTips)
+			return;
+
+		tipTimer.cancel();
+		tipTextScrolling = false;
+
+		tipTimer.start(1.0, function(timer:FlxTimer)
+		{
+			tipTimer.start(2.25, function(timer:FlxTimer)
+			{
+				tipTextScrolling = true;
+			});
+		});
+	}
 
 	var selectedSomethin:Bool = false;
 
@@ -165,9 +251,22 @@ class MainMenuState extends MusicBeatState
 		if (FlxG.sound.music.volume < 0.8)
 		{
 			FlxG.sound.music.volume += 0.5 * elapsed;
-			if(FreeplayState.vocals != null) FreeplayState.vocals.volume += 0.5 * elapsed;
+			if (FreeplayState.vocals != null) FreeplayState.vocals.volume += 0.5 * elapsed;
 		}
+
 		FlxG.camera.followLerp = FlxMath.bound(elapsed * 9 / (FlxG.updateFramerate / 60), 0, 1);
+
+		// NKL-4ever FunnyTips scrolling
+		if (canDoTips && tipTextScrolling && tipText != null)
+		{
+			tipText.x -= elapsed * 130;
+
+			if (tipText.x + tipText.width < -tipTextMargin)
+			{
+				changeTipText();
+				tipTextStartScrolling();
+			}
+		}
 
 		if (!selectedSomethin)
 		{
@@ -201,7 +300,7 @@ class MainMenuState extends MusicBeatState
 					selectedSomethin = true;
 					FlxG.sound.play(Paths.sound('confirmMenu'));
 
-					if(ClientPrefs.data.flashing) FlxFlicker.flicker(magenta, 1.1, 0.15, false);
+					if (ClientPrefs.data.flashing) FlxFlicker.flicker(magenta, 1.1, 0.15, false);
 
 					menuItems.forEach(function(spr:FlxSprite)
 					{
@@ -249,6 +348,7 @@ class MainMenuState extends MusicBeatState
 					});
 				}
 			}
+
 			#if (desktop || android)
 			else if (controls.justPressed('debug_1') #if android || MusicBeatState._virtualpad.buttonE.justPressed #end)
 			{
@@ -284,9 +384,9 @@ class MainMenuState extends MusicBeatState
 			{
 				spr.animation.play('selected');
 				var add:Float = 0;
-				if(menuItems.length > 4) {
+				if (menuItems.length > 4)
 					add = menuItems.length * 8;
-				}
+
 				camFollow.setPosition(spr.getGraphicMidpoint().x, spr.getGraphicMidpoint().y - add);
 				spr.centerOffsets();
 			}
