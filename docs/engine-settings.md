@@ -9,7 +9,7 @@ These settings focus on performance, debugging, interface customization, and gam
 
 ## Available Settings
 
-* 1. FPS Rework
+1. FPS Rework
 
 Category: Performance
 Enables the FPS Rework system, designed to improve rendering performance and provide a smoother gameplay experience.
@@ -18,7 +18,7 @@ Purpose:
 - Reduce performance inconsistencies.
 - Provide a smoother experience.
 
-* 2. Debug Info
+2. Debug Info
 
 Category: Diagnostics
 Enables additional debugging information to help developers monitor engine behavior and performance.
@@ -27,7 +27,7 @@ Purpose:
 - Assist with debugging.
 - Help identify potential performance issues.
 
-* 3. Enable ```"watermarkEngine.txt"```
+3. Enable ```"watermarkEngine.txt"```
 
 Category: Interface
 Enables the engine watermark displayed in the center of the screen.
@@ -43,7 +43,7 @@ Purpose:
 - Allow users to change the displayed text.
 - Keep watermark customization separate from the engine source code.
 
-* 4. Disable Notes Colors
+4. Disable Notes Colors
 
 Category: Gameplay
 Disables the traditional colored note appearance, allowing notes to use a monochromatic or grayscale visual style.
