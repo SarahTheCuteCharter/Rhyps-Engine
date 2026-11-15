@@ -47,6 +47,10 @@ We're using the Psych Engine v0.71h as a base and have improved it even further!
 * **Mod Folder Accessibility** — Easier access to mods, charts, assets and configuration files through internal storage.
 * **Custom Gameplay Settings** — More control over gameplay behavior and engine configurations.
 * **Improved Asset Management** — Better organization and handling of mod assets.
+* **Developer Console** — Additional debugging information and development utilities.
+* **Cross-Mod Compatibility** — Improved support for different mod structures and custom content.
+* **Mobile Interface Optimization** — Interface improvements designed for Android devices.
+<b> AND, MOREEEEEEE!! </b>
 
 # Credits
 * **Shadow Mario** - Programmer
