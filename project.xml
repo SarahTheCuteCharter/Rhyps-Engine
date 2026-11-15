@@ -28,6 +28,7 @@
     <haxelib name="linc_luajit" />
     <haxelib name="hxCodec" />
 
+    <set name="MODS_ALLOWED" />
     <set name="android" if="android" />
     <set name="mobile" if="android || ios" />
 </project>
