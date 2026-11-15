@@ -597,15 +597,15 @@ class FlxSound extends FlxBasic
 		{
 			_channel.soundTransform = _transform;
 
-			@:privateAccess
-			if(_channel.__source != null)
+			#if (cpp && openfl_legacy)
+			try
 			{
-				#if cpp
-				@:privateAccess
-				this._channel.__source.__backend.setPitch(_pitch);
-				// trace('changing $name pitch new $_pitch');
-				#end
+				var channelSource:Dynamic = _channel.__source;
+				if (channelSource != null && channelSource.__backend != null)
+					channelSource.__backend.setPitch(_pitch);
 			}
+			catch (e:Dynamic) {}
+			#end
 		}
 	}
 
@@ -765,7 +765,7 @@ class FlxSound extends FlxBasic
 		return _transform.pan;
 	}
 
-	inline function set_pan(pan:Float):Float
+	function set_pan(pan:Float):Float
 	{
 		return _transform.pan = pan;
 	}
