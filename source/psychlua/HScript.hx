@@ -68,6 +68,20 @@ class HScript extends SScript
 		execute();
 	}
 
+	/**
+	 * SScript doesn't expose kill() in the version used by this project. Remove
+	 * this interpreter from its registry so PlayState can clean up failed scripts.
+	 */
+	public function kill():Void
+	{
+		var key:String = origin;
+		if (key == null || key.length == 0)
+			key = scriptFile;
+
+		if (key != null && SScript.global.exists(key) && SScript.global.get(key) == this)
+			SScript.global.remove(key);
+	}
+
 	override function preset()
 	{
 		super.preset();
@@ -347,4 +361,4 @@ class CustomFlxColor
 		return cast FlxColor.fromString(str);
 	}
 }
-#end
+#endif
