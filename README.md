@@ -25,7 +25,7 @@
   And we use .lua to create scripts, events, backgrounds, and much more to make the game look better.
 </p>
 
-# Welcome to Sarah's Engine
+# Base
 
 We're using the Psych Engine v0.71h as a base and have improved it even further! We have new mechanics, features, and tools throughout the game. Follow along and see the details below.
 
