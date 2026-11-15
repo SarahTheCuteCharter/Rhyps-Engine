@@ -4,7 +4,6 @@ import flixel.FlxBasic;
 import objects.Character;
 import psychlua.FunkinLua;
 import psychlua.CustomSubstate;
-import tea.TeaCall;
 
 #if HSCRIPT_ALLOWED
 import tea.SScript;
@@ -172,7 +171,7 @@ class HScript extends SScript
 		set('remove', function(obj:FlxBasic, splice:Bool = false) PlayState.instance.remove(obj, splice));
 	}
 
-	public function executeCode(?funcToRun:String = null, ?funcArgs:Array<Dynamic> = null):TeaCall
+	public function executeCode(?funcToRun:String = null, ?funcArgs:Array<Dynamic> = null):Dynamic
 	{
 		if (funcToRun == null) return null;
 
@@ -182,8 +181,8 @@ class HScript extends SScript
 			return null;
 		}
 
-		var callValue = call(funcToRun, funcArgs);
-		if (!callValue.succeeded)
+		var callValue:Dynamic = call(funcToRun, funcArgs);
+		if (callValue != null && !callValue.succeeded)
 		{
 			var e = callValue.exceptions[0];
 			if (e != null)
@@ -198,7 +197,7 @@ class HScript extends SScript
 		return callValue;
 	}
 
-	public function executeFunction(funcToRun:String = null, funcArgs:Array<Dynamic>):TeaCall
+	public function executeFunction(funcToRun:String = null, funcArgs:Array<Dynamic>):Dynamic
 	{
 		if (funcToRun == null)
 			return null;
@@ -210,7 +209,7 @@ class HScript extends SScript
 	{
 		#if LUA_ALLOWED
 		funk.addLocalCallback("runHaxeCode", function(codeToRun:String, ?varsToBring:Any = null, ?funcToRun:String = null, ?funcArgs:Array<Dynamic> = null):Dynamic {
-			var retVal:TeaCall = null;
+			var retVal:Dynamic = null;
 			#if SScript
 			initHaxeModuleCode(funk, codeToRun);
 			if(varsToBring != null)
@@ -246,7 +245,7 @@ class HScript extends SScript
 		funk.addLocalCallback("runHaxeFunction", function(funcToRun:String, ?funcArgs:Array<Dynamic> = null) {
 			#if SScript
 			var callValue = funk.hscript.executeFunction(funcToRun, funcArgs);
-			if (!callValue.succeeded)
+			if (callValue != null && !callValue.succeeded)
 			{
 				var e = callValue.exceptions[0];
 				if (e != null)
@@ -354,4 +353,4 @@ class CustomFlxColor
 		return cast FlxColor.fromString(str);
 	}
 }
-#end
+#endif
