@@ -39,6 +39,14 @@ We're using the Psych Engine v0.71h as a base and have improved it even further!
 * **Expanded Modding** — More flexibility for mod creators.
 * **Android Compatibility** — Support of the first Psych NKL-4ever Engine.
 * **Psych Engine but Better' Feature** - Supported Update
+* **Advanced Memory Management** — Improved memory handling for demanding gameplay and resource-intensive mods.
+* **Chart Loading Optimization** — Improved loading system for large and complex chart files.
+* **Custom Note Types** — Support for custom note behaviors and gameplay mechanics.
+* **Extended Event System** — More possibilities for custom events and gameplay interactions.
+* **Advanced HUD Customization** — Flexible HUD elements, layouts and visual customization.
+* **Mod Folder Accessibility** — Easier access to mods, charts, assets and configuration files through internal storage.
+* **Custom Gameplay Settings** — More control over gameplay behavior and engine configurations.
+* **Improved Asset Management** — Better organization and handling of mod assets.
 
 # Credits
 * **Shadow Mario** - Programmer
