@@ -10,6 +10,15 @@ import tea.SScript;
 class HScript extends SScript
 {
 	public var parentLua:FunkinLua;
+
+	// SScript versions used by this project expose parsingExceptions. Keep the
+	// singular alias for existing callers such as PlayState.initHScript.
+	public var parsingException(get, never):Dynamic;
+	function get_parsingException():Dynamic
+	{
+		@:privateAccess
+		return parsingExceptions != null && parsingExceptions.length > 0 ? parsingExceptions[0] : null;
+	}
 	
 	public static function initHaxeModule(parent:FunkinLua)
 	{
@@ -30,11 +39,13 @@ class HScript extends SScript
 		}
 		else
 		{
-			hs.doScript(code);
+			hs.doString(code);
 			@:privateAccess
-			if(hs.parsingException != null)
+			if(hs.parsingExceptions != null && hs.parsingExceptions.length > 0)
 			{
-				PlayState.instance.addTextToDebug('ERROR ON LOADING (${hs.origin}): ${hs.parsingException.message}', FlxColor.RED);
+				var error = hs.parsingExceptions[0];
+				if(error != null)
+					PlayState.instance.addTextToDebug('ERROR ON LOADING (${hs.origin}): ${error.message}', FlxColor.RED);
 			}
 		}
 	}
@@ -325,12 +336,10 @@ class CustomFlxColor
 	{	
 		return cast FlxColor.fromRGBFloat(Red, Green, Blue, Alpha);
 	}
-
 	public static inline function fromCMYK(Cyan:Float, Magenta:Float, Yellow:Float, Black:Float, Alpha:Float = 1):Int
 	{
 		return cast FlxColor.fromCMYK(Cyan, Magenta, Yellow, Black, Alpha);
 	}
-
 	public static function fromHSB(Hue:Float, Sat:Float, Brt:Float, Alpha:Float = 1):Int
 	{	
 		return cast FlxColor.fromHSB(Hue, Sat, Brt, Alpha);
