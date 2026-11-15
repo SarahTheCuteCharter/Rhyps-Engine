@@ -179,7 +179,13 @@ class HScript extends SScript
 		set('this', this);
 		set('game', PlayState.instance);
 		if (PlayState.instance != null)
-			setSpecialObject(PlayState.instance, false, PlayState.instance.instancesExclude);
+		{
+			// Older SScript releases don't provide setSpecialObject. Use reflection
+			// so this compatibility hook doesn't create a compile-time dependency.
+			var specialObjectSetter:Dynamic = Reflect.field(this, "setSpecialObject");
+			if (specialObjectSetter != null)
+				Reflect.callMethod(this, specialObjectSetter, [PlayState.instance, false, PlayState.instance.instancesExclude]);
+		}
 		set('buildTarget', FunkinLua.getBuildTarget());
 		set('customSubstate', CustomSubstate.instance);
 		set('customSubstateName', CustomSubstate.name);
