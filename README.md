@@ -102,3 +102,4 @@ On Preferences you can toggle Downscroll, Middlescroll, Anti-Aliasing, Framerate
 * [Android Storage System](docs/android-storage.md)
 * [Mods For NKL Engine](docs/chartz-for-engine.md)
 * [Changelog](CHANGELOG.md)
+* [Engine Settings Documentation](engine-settings.md)
