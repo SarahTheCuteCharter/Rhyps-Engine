@@ -94,9 +94,16 @@ jobs:
 
       - name: Building
         shell: bash
+        working-directory: ${{ github.workspace }}
         run: |
-        cd "$GITHUB_WORKSPACE"
-        haxelib run lime build ./project.xml android
+          project_file="$(find "$GITHUB_WORKSPACE" -maxdepth 1 -type f -iname 'project.xml' -print -quit)"
+          if [ -z "$project_file" ]; then
+            echo "No project XML found in $GITHUB_WORKSPACE"
+            ls -la "$GITHUB_WORKSPACE"
+            exit 1
+          fi
+          echo "Building project file: $project_file"
+          haxelib run lime build "$project_file" android
 
       - name: Clear Previous Cache
         uses: actions/github-script@main
