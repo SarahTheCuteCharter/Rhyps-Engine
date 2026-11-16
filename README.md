@@ -95,7 +95,8 @@ On Preferences you can toggle Downscroll, Middlescroll, Anti-Aliasing, Framerate
 * **Pelicirihu's Top Charts**: Collection of Sanduiche-Plays's Harder and Impossibles Charts.
 * **Dave and Dave Charts**: SarahTheCharter's Extreme Dave Charts
 
-## This is a fork repo by beihu235, see more [here](https://github.com/beihu235/Psych-Engine-0.71h-androidl
+## This is a fork repo by beihu235, see more below!
+[Here!](https://github.com/beihu235/Psych-Engine-0.71h-android)
 
 ## Documentation
 * [Installation Guide](docs/installation.md)
