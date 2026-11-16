@@ -26,7 +26,7 @@
 </p>
 
 # Base
-We're using the Psych Engine v0.71h as a base and have improved it even further! We have new mechanics, features, and tools throughout the game. Follow along and see the details below.
+We're using the [Psych Engine v0.71h](https://github.com/beihu235/Psych-Engine-0.71h-android) by beihu256 as a base and have improved it even further! We have new mechanics, features, and tools throughout the game. Follow along and see the details below.
 
 ## Features/Performances
 * **Advanced Chart System** — Support for complex and extremely large charts.
@@ -95,8 +95,7 @@ On Preferences you can toggle Downscroll, Middlescroll, Anti-Aliasing, Framerate
 * **Pelicirihu's Top Charts**: Collection of Sanduiche-Plays's Harder and Impossibles Charts.
 * **Dave and Dave Charts**: SarahTheCharter's Extreme Dave Charts
 
-## This is a fork repo by beihu235, see more below!
-[Here!](https://github.com/beihu235/Psych-Engine-0.71h-android)
+## This is a fork repo by beihu235 and them contributors!
 
 ## Documentation
 * [Installation Guide](docs/installation.md)
