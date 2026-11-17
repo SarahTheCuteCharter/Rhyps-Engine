@@ -1,7 +1,7 @@
 <!--titulo br-->
 <h1 align="center">
   <br>
-  <img src="assets/logo.png" alt="NKL-4ever Engine" width="150">
+  <img src="assets/logo." alt="Rhyps Engine" width="150">
   <br>
   <b>Rhyps Engine</b>
   <br>
@@ -105,4 +105,9 @@ On Preferences you can toggle Downscroll, Middlescroll, Anti-Aliasing, Framerate
 * [Mods For NKL Engine](docs/chartz-for-engine.md)
 * [Engine Settings Documentation](docs/engine-settings.md)
 * [Changelog](CHANGELOG.md)
-  
+
+<a href="https://github.com/SarahTheCuteCharter/Rhyps-Engine/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=SarahTheCuteCharter/Rhyps-Engine" />
+</a>
+
+Made with [contrib.rocks](https://contrib.rocks).
