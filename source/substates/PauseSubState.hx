@@ -37,7 +37,10 @@ class PauseSubState extends MusicBeatSubstate
 	{
 		super();
 		if(Difficulty.list.length < 2) menuItemsOG.remove('Change Difficulty'); //No need to change difficulty if there is only one!
-
+		
+		if (PlayState.instance.engineWatermark != null)
+    PlayState.instance.engineWatermark.visible = false;
+		
 		if(PlayState.chartingMode)
 		{
 			menuItemsOG.insert(2, 'Leave Charting Mode');
@@ -250,6 +253,8 @@ class PauseSubState extends MusicBeatSubstate
 			switch (daSelected)
 			{
 				case "Resume":
+                    if (PlayState.instance.engineWatermark != null)
+                    PlayState.instance.engineWatermark.visible = ClientPrefs.data.showEngineWatermark;
 					close();
 				case 'Change Difficulty':
 					menuItems = difficultyChoices;
