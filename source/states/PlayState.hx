@@ -1289,16 +1289,20 @@ class PlayState extends MusicBeatState
 	private function generateSong(dataPath:String):Void
 	{
 		// FlxG.log.add(ChartParser.parse());
-		songSpeed = PlayState.SONG.speed;
-		songSpeedType = ClientPrefs.getGameplaySetting('scrolltype');
-		switch(songSpeedType)
-		{
-			case "multiplicative":
-				songSpeed = SONG.speed * ClientPrefs.getGameplaySetting('scrollspeed');
-			case "constant":
-				songSpeed = ClientPrefs.getGameplaySetting('scrollspeed');
-		}
+    songSpeedType = ClientPrefs.getGameplaySetting('scrolltype');
+		
+    randomizedScrollSpeed = ClientPrefs.getGameplaySetting('scrollspeed');
 
+    if (ClientPrefs.getGameplaySetting('randomscrollspeed', false))
+        randomizedScrollSpeed = FlxG.random.float(1.0, 5.6);
+        switch(songSpeedType)
+   {
+    case "multiplicative":
+        songSpeed = SONG.speed * randomizedScrollSpeed;
+
+    case "constant":
+        songSpeed = randomizedScrollSpeed;
+    }
 		var songData = SONG;
 		Conductor.bpm = songData.bpm;
 
@@ -2191,7 +2195,7 @@ class PlayState extends MusicBeatState
 					if(flValue1 == null) flValue1 = 1;
 					if(flValue2 == null) flValue2 = 0;
 
-					var newValue:Float = SONG.speed * ClientPrefs.getGameplaySetting('scrollspeed') * flValue1;
+		     var newValue:Float = SONG.speed * randomizedScrollSpeed * flValue1;
 					if(flValue2 <= 0)
 						songSpeed = newValue;
 					else
