@@ -695,26 +695,20 @@ class PlayState extends MusicBeatState
 		if(eventNotes.length < 1) checkEventNote();
 	}
 
-	function set_songSpeed(value:Float):Float
-	{
-		if(generatedMusic)
-		{
-		public var randomizedScrollSpeed:Float = 1;
-           songSpeedType = ClientPrefs.getGameplaySetting('scrolltype');
-
-        randomizedScrollSpeed = ClientPrefs.getGameplaySetting('scrollspeed');
-
-    if (ClientPrefs.getGameplaySetting('randomscrollspeed', false))
-    randomizedScrollSpeed = FlxG.random.float(1.0, 5.6);
-
-           switch(songSpeedType)
+function set_songSpeed(value:Float):Float
 {
-    case "multiplicative":
-        songSpeed = SONG.speed * randomizedScrollSpeed;
+    if(generatedMusic)
+    {
+        var ratio:Float = value / songSpeed;
+        if(ratio != 1)
+        {
+            for (note in notes.members)
+                note.resizeByRatio(ratio);
 
-    case "constant":
-        songSpeed = randomizedScrollSpeed;
-}
+            for (note in unspawnNotes)
+                note.resizeByRatio(ratio);
+        }
+    }
 			var ratio:Float = value / songSpeed; //funny word huh
 			if(ratio != 1)
 			{
@@ -723,10 +717,10 @@ class PlayState extends MusicBeatState
 			}
 		}
 	}
-		songSpeed = value;
-		noteKillOffset = Math.max(Conductor.stepCrochet, 350 / songSpeed * playbackRate);
-		return value;
-	}
+        songSpeed = value;
+        noteKillOffset = Math.max(Conductor.stepCrochet, 350 / songSpeed * playbackRate);
+        return value;
+		}
 
 	function set_playbackRate(value:Float):Float
 	{
@@ -1291,18 +1285,20 @@ class PlayState extends MusicBeatState
 	{
 		// FlxG.log.add(ChartParser.parse());
     songSpeedType = ClientPrefs.getGameplaySetting('scrolltype');
-		
-    randomizedScrollSpeed = ClientPrefs.getGameplaySetting('scrollspeed');
 
+    randomizedScrollSpeed = ClientPrefs.getGameplaySetting('scrollspeed');
+		
     if (ClientPrefs.getGameplaySetting('randomscrollspeed', false))
         randomizedScrollSpeed = FlxG.random.float(1.0, 5.6);
-        switch(songSpeedType)
-   {
+
+    switch(songSpeedType)
+{
     case "multiplicative":
         songSpeed = SONG.speed * randomizedScrollSpeed;
 
     case "constant":
         songSpeed = randomizedScrollSpeed;
+        }
     }
 		var songData = SONG;
 		Conductor.bpm = songData.bpm;
