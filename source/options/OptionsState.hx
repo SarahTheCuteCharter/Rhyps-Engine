@@ -46,6 +46,11 @@ class OptionsState extends MusicBeatState
 				removeVirtualPad();
 				#end
 				MusicBeatState.switchState(new options.NoteOffsetState());
+			case 'Engine Settings':
+                #if android
+                removeVirtualPad();
+                #end
+                openSubState(new options.EngineSettingsSubState());
 		}
 	}
 
