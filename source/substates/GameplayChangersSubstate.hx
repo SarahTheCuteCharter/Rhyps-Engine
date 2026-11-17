@@ -73,7 +73,7 @@ class GameplayChangersSubstate extends MusicBeatSubstate
 		var option:GameplayOption = new GameplayOption('Botplay', 'botplay', 'bool', false);
 		optionsArray.push(option);
 		
-        var randomSpeedOption:GameplayOption = new GameplayOption('Random Scroll Speed','randomscrollspeed','bool',false));
+        var randomSpeedOption:GameplayOption = new GameplayOption('Random Scroll Speed','randomscrollspeed','bool',false);
         optionsArray.push(randomSpeedOption);
 	}
 
