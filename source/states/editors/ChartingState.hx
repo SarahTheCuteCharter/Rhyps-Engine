@@ -316,6 +316,7 @@ class ChartingState extends MusicBeatState
 		var tabs = [
 			{name: "Song", label: 'Song'},
 			{name: "Section", label: 'Section'},
+            {name: "Spammy Note", label: "Spammy Note"},
 			{name: "Note", label: 'Note'},
 			{name: "Events", label: 'Events'},
 			{name: "Charting", label: 'Charting'},
@@ -357,7 +358,8 @@ class ChartingState extends MusicBeatState
 		\nV/D - Zoom in/out
 		\nB - Test your chart inside Chart Editor
 		\nUP/Down(Right Side) - Decrease/Increase Note Sustain Length
-		\nY - Stop/Resume song";
+		\nY - Stop/Resume song
+        \nENJOY RHYPS ENGINE!";
 		#end
 
 		var tipTextArray:Array<String> = text.split('\n');
@@ -373,6 +375,7 @@ class ChartingState extends MusicBeatState
 
 		addSongUI();
 		addSectionUI();
+		addSpammyNoteUI();
 		addNoteUI();
 		addEventsUI();
 		addDataUI();
@@ -647,6 +650,13 @@ class ChartingState extends MusicBeatState
 	var check_changeBPM:FlxUICheckBox;
 	var stepperSectionBPM:FlxUINumericStepper;
 	var check_altAnim:FlxUICheckBox;
+	var checkSpamActive:FlxUICheckBox;
+    var stepperSpamCount:FlxUINumericStepper;
+    var stepperSpamMultiplier:FlxUINumericStepper;
+    var stepperSpamScroll:FlxUINumericStepper;
+    var stepperStretchAmount:FlxUINumericStepper;
+    var stepperShiftSteps:FlxUINumericStepper;
+    var stepperDuplicateAmount:FlxUINumericStepper;
 
 	var sectionToCopy:Int = 0;
 	var notesCopied:Array<Dynamic>;
@@ -972,6 +982,161 @@ class ChartingState extends MusicBeatState
 	var eventDropDown:FlxUIDropDownMenu;
 	var descText:FlxText;
 	var selectedEventText:FlxText;
+	function addSpammyUI():Void // INFO: THIS MAY CAUSE SOME ERRORS!!
+	{
+		var tab_group_spammy = new FlxUI(null, UI_box);
+		tab_group_spammy.name = 'Spammy Note';
+		
+	checkSpamActive = new FlxUICheckBox(10, 10, null, null, "Enable EZ Spam Mode", 130);
+    checkSpamActive.checked = false;
+
+    stepperSpamCount = new FlxUINumericStepper(10, 45, 1, 1, 0, 999999, 0);
+    stepperSpamCount.name = 'spam_count';
+    blockPressWhileTypingOnStepper.push(stepperSpamCount);
+
+    var doubleSpamCount = new FlxButton(10, 75, "x2 Amount", function()
+    {
+        stepperSpamCount.value *= 2;
+    });
+    doubleSpamCount.color = FlxColor.GREEN;
+    doubleSpamCount.label.color = FlxColor.WHITE;
+
+    var halfSpamCount = new FlxButton(110, 75, "x0.5 Amount", function()
+    {
+        stepperSpamCount.value /= 2;
+    });
+    halfSpamCount.color = FlxColor.RED;
+    halfSpamCount.label.color = FlxColor.WHITE;
+
+    stepperSpamMultiplier = new FlxUINumericStepper(10, 120, 1, 1, 1, 999999, 0);
+    stepperSpamMultiplier.name = 'spam_multiplier';
+    blockPressWhileTypingOnStepper.push(stepperSpamMultiplier);
+
+    var doubleMultiplier = new FlxButton(10, 150, "x2 SM", function()
+    {
+        stepperSpamMultiplier.value *= 2;
+    });
+    doubleMultiplier.color = FlxColor.GREEN;
+    doubleMultiplier.label.color = FlxColor.WHITE;
+
+    var halfMultiplier = new FlxButton(110, 150, "x0.5 SM", function()
+    {
+        stepperSpamMultiplier.value = Math.max(1, stepperSpamMultiplier.value / 2);
+    });
+    halfMultiplier.color = FlxColor.RED;
+    halfMultiplier.label.color = FlxColor.WHITE;
+
+    stepperSpamScroll = new FlxUINumericStepper(10, 195, 1, 0, -9999, 9999, 0);
+    stepperSpamScroll.name = 'spam_scroll';
+    blockPressWhileTypingOnStepper.push(stepperSpamScroll);
+
+    stepperStretchAmount = new FlxUINumericStepper(10, 245, 0.1, 1, 0.1, 8192, 2);
+    stepperStretchAmount.name = 'stretch_amount';
+    blockPressWhileTypingOnStepper.push(stepperStretchAmount);
+
+    var doubleStretch = new FlxButton(10, 275, "x2 SH", function()
+    {
+        stepperStretchAmount.value *= 2;
+    });
+    doubleStretch.color = FlxColor.GREEN;
+    doubleStretch.label.color = FlxColor.WHITE;
+
+    var halfStretch = new FlxButton(110, 275, "x0.5 SH", function()
+    {
+        stepperStretchAmount.value = Math.max(0.1, stepperStretchAmount.value / 2);
+    });
+    halfStretch.color = FlxColor.RED;
+    halfStretch.label.color = FlxColor.WHITE;
+
+    var stretchNotesButton = new FlxButton(10, 315, "Stretch Notes", function()
+    {
+        var startTime:Float = sectionStartTime();
+        var amount:Float = stepperStretchAmount.value;
+
+        for (note in _song.notes[curSec].sectionNotes)
+        {
+            if (note[2] > 0)
+                note[2] *= amount;
+
+            note[0] = startTime + ((note[0] - startTime) * amount);
+        }
+
+        updateGrid();
+    });
+
+    stepperShiftSteps = new FlxUINumericStepper(10, 365, 1, 1, -8192, 8192, 2);
+    stepperShiftSteps.name = 'shift_steps';
+    blockPressWhileTypingOnStepper.push(stepperShiftSteps);
+
+    var shiftNotesButton = new FlxButton(10, 395, "Shift Notes", function()
+    {
+        var shiftAmount:Float = stepperShiftSteps.value * Conductor.stepCrochet;
+
+        for (note in _song.notes[curSec].sectionNotes)
+            note[0] += shiftAmount;
+
+        updateGrid();
+    });
+
+    stepperDuplicateAmount = new FlxUINumericStepper(10, 445, 1, 1, 0, 32, 0);
+    stepperDuplicateAmount.name = 'duplicate_amount';
+    blockPressWhileTypingOnStepper.push(stepperDuplicateAmount);
+
+    var duplicateNotesButton = new FlxButton(10, 475, "Duplicate Notes", function()
+    {
+        var originalNotes:Array<Array<Dynamic>> = [];
+
+        for (note in _song.notes[curSec].sectionNotes)
+            originalNotes.push(note.copy());
+
+        var amount:Int = Std.int(stepperDuplicateAmount.value);
+        var shift:Float = stepperShiftSteps.value * Conductor.stepCrochet;
+
+        for (i in 1...(amount + 1))
+        {
+            for (note in originalNotes)
+            {
+                var copiedNote:Array<Dynamic> = note.copy();
+                copiedNote[0] += shift * i;
+                _song.notes[curSec].sectionNotes.push(copiedNote);
+            }
+        }
+
+        updateGrid();
+    });
+
+    tab_group_spammy.add(checkSpamActive);
+
+    tab_group_spammy.add(stepperSpamCount);
+    tab_group_spammy.add(new FlxText(110, 45, 0, "Spam Count"));
+    tab_group_spammy.add(doubleSpamCount);
+    tab_group_spammy.add(halfSpamCount);
+
+    tab_group_spammy.add(stepperSpamMultiplier);
+    tab_group_spammy.add(new FlxText(110, 120, 0, "Spam Multiplier"));
+    tab_group_spammy.add(doubleMultiplier);
+    tab_group_spammy.add(halfMultiplier);
+
+    tab_group_spammy.add(stepperSpamScroll);
+    tab_group_spammy.add(new FlxText(110, 195, 0, "Spam Scroll Amount"));
+
+    tab_group_spammy.add(stepperStretchAmount);
+    tab_group_spammy.add(new FlxText(110, 245, 0, "Stretch Amount"));
+    tab_group_spammy.add(doubleStretch);
+    tab_group_spammy.add(halfStretch);
+    tab_group_spammy.add(stretchNotesButton);
+
+    tab_group_spammy.add(stepperShiftSteps);
+    tab_group_spammy.add(new FlxText(110, 365, 0, "Steps to Shift By"));
+    tab_group_spammy.add(shiftNotesButton);
+
+    tab_group_spammy.add(stepperDuplicateAmount);
+    tab_group_spammy.add(new FlxText(110, 445, 0, "Amount of Duplicates"));
+    tab_group_spammy.add(duplicateNotesButton);
+
+    UI_box.addGroup(tab_group_spammy);
+}
+	
 	function addEventsUI():Void
 	{
 		var tab_group_event = new FlxUI(null, UI_box);
