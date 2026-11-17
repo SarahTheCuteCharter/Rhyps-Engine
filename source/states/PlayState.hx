@@ -582,22 +582,24 @@ class PlayState extends MusicBeatState
 		timeBar.cameras = [camHUD];
 		timeTxt.cameras = [camHUD];
 
-		startingSong = true;
-		// Rhyps Engine Watermark
-		var watermarkText:String = Paths.getTextFromFile('preload/data/watermarkText.txt');
-			if (watermarkText == null)
-				watermarkText = '';
-				
-		watermarkText = StringTools.trim(watermarkText);
-				engineWatermark = new FlxText(0, 0, FlxG.width, watermarkText, 24);
-				engineWatermark.setFormat(Paths.font("vcr.ttf"), 24, FlxColor.WHITE, CENTER);
-				engineWatermark.scrollFactor.set();
-				engineWatermark.screenCenter();
-				engineWatermark.alpha = 0.4;
-				engineWatermark.visible = false;
-				engineWatermark.cameras = [camHUD];
-				
-		add(engineWatermark);
+        startingSong = true;
+        // Rhyps Engine Watermark, like JS Engine
+        var watermarkText:String = Paths.getTextFromFile('data/watermarkText.txt');
+
+        if (watermarkText == null)
+            watermarkText = '';
+
+        watermarkText = StringTools.trim(watermarkText);
+
+        engineWatermark = new FlxText(0, 0, FlxG.width, watermarkText, 24);
+        engineWatermark.setFormat(Paths.font("vcr.ttf"), 24, FlxColor.WHITE, CENTER);
+        engineWatermark.scrollFactor.set();
+        engineWatermark.screenCenter();
+        engineWatermark.alpha = 0.4;
+        engineWatermark.visible = false;
+        engineWatermark.cameras = [camHUD];
+
+        add(engineWatermark);
 		
 		#if LUA_ALLOWED
 		for (notetype in noteTypes)
