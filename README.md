@@ -84,7 +84,7 @@ On Preferences you can toggle Downscroll, Middlescroll, Anti-Aliasing, Framerate
 * **Lua** — Official scripting language.
 * **Python, JavaScript, C++ and C#** — Additional scripting support.
 
-## Rhyps Engine Stuff's 
+## Rhyps Engine Stuff's (PLANNED)
 * **RhypsEngine-Bridge**: Planned system for connecting scripting languages with engine functions.
 * **Charts-For-Rhyps-Engine**: Repository for custom charts and mods. (PLANNED)
 * **Hexgi's Top Charts**: Collection of exaggerated, difficult and humanly impossible charts.
@@ -102,6 +102,7 @@ On Preferences you can toggle Downscroll, Middlescroll, Anti-Aliasing, Framerate
 * [Engine Settings Documentation](docs/engine-settings.md)
 * [Changelog](CHANGELOG.md)
 
+# the Contribution Guys
 <a href="https://github.com/SarahTheCuteCharter/Rhyps-Engine/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=SarahTheCuteCharter/Rhyps-Engine" />
 </a>
