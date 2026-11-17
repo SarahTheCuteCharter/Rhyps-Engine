@@ -36,7 +36,7 @@ class MainMenuState extends MusicBeatState
 	var magenta:FlxSprite;
 	var camFollow:FlxObject;
 
-	// NKL-4ever FunnyTips System
+	// FunnyTips System
 	var tipTextMargin:Float = 10;
 	var tipTextScrolling:Bool = false;
 	var tipBackground:FlxSprite;
