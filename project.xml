@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project>
-    <meta title="Friday Night Funkin': NKL-4ever" package="com.sarahthecharter.nkl4ever" version="0.2.8" company="ShadowMario" />
+    <meta title="Friday Night Funkin': Rhyps Engine" package="com.sarahthecharter.rhyps" version="0.2.8" company="ShadowMario" />
 
-    <app main="Main" file="NKL-4ever" path="export" preloader="Preloader" />
+    <app main="Main" file="RhypsEngine" path="export" preloader="Preloader" />
 
     <window width="1280" height="720" fps="60" hardware="true" allow-high-dpi="true" />
     <window if="android" orientation="sensorLandscape" />
