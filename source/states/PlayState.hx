@@ -1234,15 +1234,15 @@ class PlayState extends MusicBeatState
 	function startSong():Void
 	{
 		startingSong = false;
-		if (engineWatermark != null)
-		    engineWatermark.visible = 
-		ClientPrefs.data.showEngineWatermark;
+        if (engineWatermark != null)
+            engineWatermark.visible = 
+	    ClientPrefs.data.showEngineWatermark;
 
 		@:privateAccess
 		FlxG.sound.playMusic(inst._sound, 1, false);
 		FlxG.sound.music.pitch = playbackRate;
 		FlxG.sound.music.onComplete = finishSong.bind();
-		vocals.play();
+		vocals.play(); 
 
 		if(startOnTime > 0) setSongTime(startOnTime - 500);
 		startOnTime = 0;
