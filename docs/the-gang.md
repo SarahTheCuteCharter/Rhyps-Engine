@@ -25,5 +25,5 @@ DerickAugusto
 
 ## Acknowledgements
 
-Special thanks to everyone who contributes with ideas, testing, suggestions, bug reports, improvements. :)
-Every contribution helps Rhyps Engine evolve. ^^
+- Special thanks to everyone who contributes with ideas, testing, suggestions, bug reports, improvements. :)
+- Every contribution helps Rhyps Engine evolve. ^^
