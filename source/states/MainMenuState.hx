@@ -131,12 +131,12 @@ class MainMenuState extends MusicBeatState
 		fnfVersion.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(fnfVersion);
 
-		// NKL-4ever FunnyTips initialization
+		// FunnyTips like JS Engine, the code is not from JS Engine
 		tipsArray = CoolUtil.coolTextFile(Paths.txt('funnyTips'));
 		canDoTips = tipsArray != null && tipsArray.length > 0;
 
 		if (!canDoTips)
-			trace('NKL-4ever FunnyTips: no tips found!');
+			trace('FunnyTips: no tips found!');
 
 		tipBackground = new FlxSprite();
 		tipBackground.scrollFactor.set();
@@ -190,7 +190,7 @@ class MainMenuState extends MusicBeatState
 	}
 	#end
 
-	// NKL-4ever FunnyTips: choose a tip and prepare its text.
+	// FunnyTips: choose a tip and prepare its text.
 	function changeTipText()
 	{
 		if (!canDoTips || tipsArray == null || tipsArray.length == 0)
@@ -226,7 +226,7 @@ class MainMenuState extends MusicBeatState
 		});
 	}
 
-	// NKL-4ever FunnyTips: wait, then scroll the tip across the screen.
+	// FunnyTips: wait, then scroll the tip across the screen.
 	function tipTextStartScrolling()
 	{
 		if (!canDoTips)
@@ -256,7 +256,7 @@ class MainMenuState extends MusicBeatState
 
 		FlxG.camera.followLerp = FlxMath.bound(elapsed * 9 / (FlxG.updateFramerate / 60), 0, 1);
 
-		// NKL-4ever FunnyTips scrolling
+		// FunnyTips scrolling
 		if (canDoTips && tipTextScrolling && tipText != null)
 		{
 			tipText.x -= elapsed * 130;
