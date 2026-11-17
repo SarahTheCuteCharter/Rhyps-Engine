@@ -3,7 +3,7 @@
   <br>
   <img src="assets/logo.png" alt="NKL-4ever Engine" width="150">
   <br>
-  <b>Rhyps Engine/Psych4ever</b>
+  <b>Rhyps Engine</b>
   <br>
   <i>Forever. Faster. Further.</i>
   <br>
