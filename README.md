@@ -3,13 +3,13 @@
   <br>
   <img src="assets/logo.png" alt="NKL-4ever Engine" width="150">
   <br>
-  <b>Rhyps Engine</b>
+  <b>Rhyps Engine/Psych4ever</b>
   <br>
   <i>Forever. Faster. Further.</i>
   <br>
 </h1>
 <h3 align="center">
-  <b>NKL-4ever is an modified Friday Night Funkin' Psych Engine Base engine focused on performance, customization and creative freedom.</b>
+  <b>Rhyps Engine (or Psych4ever) is an modified Friday Night Funkin' Psych Engine Base engine focused on performance, customization and creative freedom.</b>
 </h3>
 <h2 align="center">
   Languages used:
@@ -37,7 +37,7 @@ We're using the [Psych Engine v0.71h](https://github.com/beihu235/Psych-Engine-0
 * **Multilanguage Scripting** — Expandable scripting architecture.
 * **Debug Tools**  — Development logs and performance diagnostics.
 * **Expanded Modding** — More flexibility for mod creators.
-* **Android Compatibility** — Support of the first Psych NKL-4ever Engine.
+* **Android Compatibility** — Support of the first Rhyps Engine.
 * **Psych Engine but Better' Feature** - Supported Update
 * **Advanced Memory Management** — Improved memory handling for demanding gameplay and resource-intensive mods.
 * **Chart Loading Optimization** — Improved loading system for large and complex chart files.
@@ -88,9 +88,9 @@ On Preferences you can toggle Downscroll, Middlescroll, Anti-Aliasing, Framerate
 * **Lua** — Official scripting language.
 * **Python, JavaScript, C++ and C#** — Additional scripting support.
 
-## NKL Ecosystem
-* **NKL-Bridge**: Planned system for connecting scripting languages with engine functions.
-* **Charts-For-NKL-Engine**: Repository for custom charts and mods.
+## Rhyps Engine Stuff's 
+* **RhypsEngine-Bridge**: Planned system for connecting scripting languages with engine functions.
+* **Charts-For-Rhyps-Engine**: Repository for custom charts and mods. (PLANNED)
 * **Hexgi's Top Charts**: Collection of exaggerated, difficult and humanly impossible charts.
 * **Pelicirihu's Top Charts**: Collection of Sanduiche-Plays's Harder and Impossibles Charts.
 * **Dave and Dave Charts**: SarahTheCharter's Extreme Dave Charts
