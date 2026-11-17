@@ -2820,36 +2820,32 @@ class ChartingState extends MusicBeatState
 		if(!waveformChanged) updateWaveform();
 	}
 
-	function updateSectionUI():Void
-	{
-		var sec = _song.notes[curSec];
+    function updateSectionUI():Void
+{
+    var sec = _song.notes[curSec];
 
-		stepperBeats.value = getSectionBeats();
-		check_mustHitSection.checked = sec.mustHitSection;
-		check_gfSection.checked = sec.gfSection;
-		check_altAnim.checked = sec.altAnim;
-		check_changeBPM.checked = sec.changeBPM;
-		stepperSectionBPM.value = sec.bpm;
-	// Rhyps Engine - Chart Statistics
-		function updateChartStats():Void
-	{
-		totalChartNotes = 0;
-		renderedChartNotes = 0;
-		sectionChartNotes = 0;
+    stepperBeats.value = getSectionBeats();
+    check_mustHitSection.checked = sec.mustHitSection;
+    check_gfSection.checked = sec.gfSection;
+    check_altAnim.checked = sec.altAnim;
+    check_changeBPM.checked = sec.changeBPM;
+    stepperSectionBPM.value = sec.bpm;
 
-    // Count all notes in the entire song
+    updateHeads();
+}
+    // Rhyps Engine - Chart Statistics
+    function updateChartStats():Void
+{
+	totalChartNotes = 0;
+    renderedChartNotes = 0;
+    sectionChartNotes = 0;
+
     for (section in _song.notes)
-    {
         totalChartNotes += section.sectionNotes.length;
-    }
 
-    // Count notes in the current section
     if (curSec >= 0 && curSec < _song.notes.length)
-    {
         sectionChartNotes = _song.notes[curSec].sectionNotes.length;
-    }
 
-    // Count currently rendered notes, excluding events
     if (curRenderedNotes != null)
     {
         curRenderedNotes.forEachAlive(function(note:Note)
@@ -2874,12 +2870,8 @@ class ChartingState extends MusicBeatState
             "TOTAL NOTES: " + totalChartNotes + "\n" +
             "RENDERED NOTES: " + renderedChartNotes + "\n" +
             "SECTION NOTES: " + sectionChartNotes;
-	}
+    }
 }
-
-		updateHeads();
-	}
-
 	function updateHeads():Void
 	{
 		var healthIconP1:String = loadHealthIconFromCharacter(_song.player1);
@@ -3047,9 +3039,11 @@ class ChartingState extends MusicBeatState
 			}
 		}
 
+
         // NEXT EVENTS
         var startThing:Float = sectionStartTime(1);
         var endThing:Float = sectionStartTime(2);
+
         for (i in _song.events)
         {
             if(endThing > i[0] && i[0] >= startThing)
@@ -3057,10 +3051,10 @@ class ChartingState extends MusicBeatState
                 var note:Note = setupNoteData(i, true);
                 note.alpha = 0.6;
                 nextRenderedNotes.add(note);
-				
-				updateChartStats();
-			}
-		}
+            }
+        }
+
+        updateChartStats();
 	}
 
 	function setupNoteData(i:Array<Dynamic>, isNextSection:Bool):Note
