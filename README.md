@@ -104,6 +104,7 @@ On Preferences you can toggle Downscroll, Middlescroll, Anti-Aliasing, Framerate
 * [Mods For NKL Engine](docs/chartz-for-engine.md)
 * [Engine Settings Documentation](docs/engine-settings.md)
 * [Changelog](CHANGELOG.md)
+* [Contributors](docs/the-gang.md)
 
 # the Contribution Guys
 <a href="https://github.com/SarahTheCuteCharter/Rhyps-Engine/graphs/contributors">
