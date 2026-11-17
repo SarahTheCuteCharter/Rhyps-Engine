@@ -3,8 +3,6 @@
   <br>
   <img src="assets/logo.png" alt="Rhyps Engine" width="150">
   <br>
-  <i>Forever. Faster. Further.</i>
-  <br>
 </h1>
 <h3 align="center">
   <b>Rhyps Engine (or Psych4ever) is an modified Friday Night Funkin' Psych Engine Base engine focused on performance, customization and creative freedom.</b>
