@@ -698,6 +698,22 @@ class PlayState extends MusicBeatState
 	{
 		if(generatedMusic)
 		{
+		public var randomizedScrollSpeed:Float = 1;
+           songSpeedType = ClientPrefs.getGameplaySetting('scrolltype');
+
+        randomizedScrollSpeed = ClientPrefs.getGameplaySetting('scrollspeed');
+
+    if (ClientPrefs.getGameplaySetting('randomscrollspeed', false))
+    randomizedScrollSpeed = FlxG.random.float(1.0, 5.6);
+
+           switch(songSpeedType)
+{
+    case "multiplicative":
+        songSpeed = SONG.speed * randomizedScrollSpeed;
+
+    case "constant":
+        songSpeed = randomizedScrollSpeed;
+}
 			var ratio:Float = value / songSpeed; //funny word huh
 			if(ratio != 1)
 			{
@@ -705,6 +721,7 @@ class PlayState extends MusicBeatState
 				for (note in unspawnNotes) note.resizeByRatio(ratio);
 			}
 		}
+	}
 		songSpeed = value;
 		noteKillOffset = Math.max(Conductor.stepCrochet, 350 / songSpeed * playbackRate);
 		return value;
@@ -713,7 +730,7 @@ class PlayState extends MusicBeatState
 	function set_playbackRate(value:Float):Float
 	{
 		if(generatedMusic)
-		{
+   {
 			if(vocals != null) vocals.pitch = value;
 			FlxG.sound.music.pitch = value;
 
