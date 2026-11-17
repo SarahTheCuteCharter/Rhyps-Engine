@@ -11,13 +11,9 @@
   Languages used:
 </h2>
 <p align="center">
-  
-![Haxe](https://img.shields.io/badge/Haxe-EA8220?style=for-the-badge&logo=haxe&logoColor=white)
-  
-![Lua](https://img.shields.io/badge/Lua-000080?style=for-the-badge&logo=lua&logoColor=white)
-
+  <img src="https://img.shields.io/badge/Haxe-EA8220?style=for-the-badge&logo=haxe&logoColor=white" alt="Haxe">
+  <img src="https://img.shields.io/badge/Lua-000080?style=for-the-badge&logo=lua&logoColor=white" alt="Lua">
 </p>
-
 <p align="center">
   We use Haxe for all engine files, like options mode, loading screen, freeplay, story mode and much more.
   <br>
