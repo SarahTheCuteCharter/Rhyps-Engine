@@ -3,8 +3,6 @@
   <br>
   <img src="assets/logo.png" alt="Rhyps Engine" width="150">
   <br>
-  <b>Rhyps Engine</b>
-  <br>
   <i>Forever. Faster. Further.</i>
   <br>
 </h1>
