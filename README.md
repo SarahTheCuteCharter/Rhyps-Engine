@@ -1,7 +1,7 @@
 <!--titulo br-->
 <h1 align="center">
   <br>
-  <img src="assets/logo." alt="Rhyps Engine" width="150">
+  <img src="assets/logo.png" alt="Rhyps Engine" width="150">
   <br>
   <b>Rhyps Engine</b>
   <br>
