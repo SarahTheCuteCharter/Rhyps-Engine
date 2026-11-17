@@ -1,0 +1,13 @@
+name: Delete workflow runs
+on:
+  workflow_dispatch:
+
+jobs:
+  delete-runs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Delete workflow runs
+        uses: iamazeem/delete-workflow-runs-action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          keep: 0 # Define quantos runs recentes deseja manter (0 apaga tudo)
