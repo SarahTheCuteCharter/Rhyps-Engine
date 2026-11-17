@@ -95,6 +95,7 @@ On Preferences you can toggle Downscroll, Middlescroll, Anti-Aliasing, Framerate
 <p align="center">
   <img
   ![Psych Engine](https://img.shields.io/badge/Psych_Engine-8A2BE2?style=for-the-badge)
+  <img
 </p>
 
 ## Documentation
