@@ -6,6 +6,9 @@ jobs:
   delete-runs:
     runs-on: ubuntu-latest
     steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
       - name: Delete workflow runs
         uses: iamazeem/delete-workflow-runs-action@v1
         with:
