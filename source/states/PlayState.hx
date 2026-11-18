@@ -697,23 +697,23 @@ class PlayState extends MusicBeatState
 
 	function set_songSpeed(value:Float):Float
 	{
-		if (generatedMusic)
+	     if (generatedMusic)
+	    {
+		var ratio:Float = value / songSpeed;
+		if (ratio != 1)
 		{
-			var ratio:Float = value / songSpeed;
-			if (ratio != 1)
-			{
-				for (note in notes.members)
-					note.resizeByRatio(ratio);
+			for (note in notes.members)
+				note.resizeByRatio(ratio);
 
-				for (note in unspawnNotes)
-					note.resizeByRatio(ratio);
-			}
+			for (note in unspawnNotes)
+				note.resizeByRatio(ratio);
 		}
-
-		songSpeed = value;
-		noteKillOffset = Math.max(Conductor.stepCrochet, 350 / songSpeed * playbackRate);
-		return value;
 	}
+
+	songSpeed = value;
+	noteKillOffset = Math.max(Conductor.stepCrochet, 350 / songSpeed * playbackRate);
+	return value;
+}
 			var ratio:Float = value / songSpeed; //funny word huh
 			if(ratio != 1)
 			{
