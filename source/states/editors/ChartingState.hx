@@ -171,20 +171,20 @@ class ChartingState extends MusicBeatState
 		16,
 		24
 	];
-	// Rhyps Engine - Chart Statistics UI
+	override function create()
+{
 	chartStatsTxt = new FlxText(10, 125, 0, "", 14);
 	chartStatsTxt.setFormat(
-    Paths.font("vcr.ttf"),
-    14,
-    FlxColor.WHITE,
-    LEFT,
-    FlxTextBorderStyle.OUTLINE,
-    FlxColor.BLACK
+		Paths.font("vcr.ttf"),
+		14,
+		FlxColor.WHITE,
+		LEFT,
+		FlxTextBorderStyle.OUTLINE,
+		FlxColor.BLACK
 	);
-	
+
 	chartStatsTxt.scrollFactor.set();
 	chartStatsTxt.borderSize = 1;
-
 	add(chartStatsTxt);
 	updateChartStats();
 	
