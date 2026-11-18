@@ -180,7 +180,7 @@ class ChartingState extends MusicBeatState
     LEFT,
     FlxTextBorderStyle.OUTLINE,
     FlxColor.BLACK
-);
+	];
 	chartStatsTxt.scrollFactor.set();
 	chartStatsTxt.borderSize = 1;
 
