@@ -714,10 +714,6 @@ function set_songSpeed(value:Float):Float
     noteKillOffset = Math.max(Conductor.stepCrochet, 350 / songSpeed * playbackRate);
     return value;
 }
-        songSpeed = value;
-        noteKillOffset = Math.max(Conductor.stepCrochet, 350 / songSpeed * playbackRate);
-        return value;
-		}
 
 	function set_playbackRate(value:Float):Float
 	{
