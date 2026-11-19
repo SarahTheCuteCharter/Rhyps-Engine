@@ -171,23 +171,23 @@ class ChartingState extends MusicBeatState
 		16,
 		24
 	];
-	override function create()
-	{
-		chartStatsTxt = new FlxText(10, 125, 0, "", 14);
-		chartStatsTxt.setFormat(
-			Paths.font("vcr.ttf"),
-			14,
-			FlxColor.WHITE,
-			LEFT,
-			FlxTextBorderStyle.OUTLINE,
-			FlxColor.BLACK
-		);
+    override function create()
+{
+	chartStatsTxt = new FlxText(10, 125, 0, "", 14);
+	chartStatsTxt.setFormat(
+		Paths.font("vcr.ttf"),
+		14,
+		FlxColor.WHITE,
+		LEFT,
+		FlxTextBorderStyle.OUTLINE,
+		FlxColor.BLACK
+	);
 
 	chartStatsTxt.scrollFactor.set();
 	chartStatsTxt.borderSize = 1;
 	add(chartStatsTxt);
 	updateChartStats();
-		
+
 	var curZoom:Int = 2;
 
 	private var blockPressWhileTypingOn:Array<FlxUIInputText> = [];
@@ -221,24 +221,27 @@ class ChartingState extends MusicBeatState
 		if (PlayState.SONG != null)
 			_song = PlayState.SONG;
 		else
-		{
-			Difficulty.resetList();
+	if (PlayState.SONG != null)
+		_song = PlayState.SONG;
+	else
+	{
+		Difficulty.resetList();
 
-			_song = {
-				song: 'Test',
-				notes: [],
-				events: [],
-				bpm: 150.0,
-				needsVoices: true,
-				player1: 'bf',
-				player2: 'dad',
-				gfVersion: 'gf',
-				speed: 1,
-				stage: 'stage'
-			};
-			addSection();
-			PlayState.SONG = _song;
-		}
+		_song = {
+			song: 'Test',
+			notes: [],
+			events: [],
+			bpm: 150.0,
+			needsVoices: true,
+			player1: 'bf',
+			player2: 'dad',
+			gfVersion: 'gf',
+			speed: 1,
+			stage: 'stage'
+		};
+		addSection();
+		PlayState.SONG = _song;
+	} 
 
 		// Paths.clearMemory();
 
