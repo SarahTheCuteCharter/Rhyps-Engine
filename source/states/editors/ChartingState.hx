@@ -187,7 +187,7 @@ class ChartingState extends MusicBeatState
 	chartStatsTxt.borderSize = 1;
 	add(chartStatsTxt);
 	updateChartStats();
-
+}
 	var curZoom:Int = 2;
 
 	private var blockPressWhileTypingOn:Array<FlxUIInputText> = [];
