@@ -171,30 +171,14 @@ class ChartingState extends MusicBeatState
 		16,
 		24
 	];
-    override function create()
-{
-	chartStatsTxt = new FlxText(10, 125, 0, "", 14);
-	chartStatsTxt.setFormat(
-		Paths.font("vcr.ttf"),
-		14,
-		FlxColor.WHITE,
-		LEFT,
-		FlxTextBorderStyle.OUTLINE,
-		FlxColor.BLACK
-	);
-
-	chartStatsTxt.scrollFactor.set();
-	chartStatsTxt.borderSize = 1;
-	add(chartStatsTxt);
-	updateChartStats();
-}
+	
 	var curZoom:Int = 2;
 
 	private var blockPressWhileTypingOn:Array<FlxUIInputText> = [];
 	private var blockPressWhileTypingOnStepper:Array<FlxUINumericStepper> = [];
 	private var blockPressWhileScrolling:Array<FlxUIDropDownMenu> = [];
 
-    var waveformSprite:FlxSprite;
+	var waveformSprite:FlxSprite;
 	var gridLayer:FlxTypedGroup<FlxSprite>;
 
 	public static var quantization:Int = 16;
@@ -202,47 +186,64 @@ class ChartingState extends MusicBeatState
 
 	public var quantizations:Array<Int> = [
 		4,
-		8,
-		12,
-		16,
-		20,
-		24,
-		32,
-		48,
-		64,
-		96,
-		192
+        8,
+        12,
+        16,
+        20,
+        24,
+        32,
+        48,
+        64,
+        96,
+        192
 	];
 	
 	var text:String = "";
 	public static var vortex:Bool = false;
 	public var mouseQuant:Bool = false;
-}
-	if (PlayState.SONG != null)
-		_song = PlayState.SONG;
-	else
-	{
-		Difficulty.resetList();
 
-		_song = {
-			song: 'Test',
-			notes: [],
-			events: [],
-			bpm: 150.0,
-			needsVoices: true,
-			player1: 'bf',
-			player2: 'dad',
-			gfVersion: 'gf',
-			speed: 1,
-			stage: 'stage'
-		};
-		addSection();
-		PlayState.SONG = _song;
-	} 
+	override function create()
+{
+    chartStatsTxt = new FlxText(10, 125, 0, "", 14);
+    chartStatsTxt.setFormat(
+        Paths.font("vcr.ttf"),
+        14,
+        FlxColor.WHITE,
+        LEFT,
+        FlxTextBorderStyle.OUTLINE,
+        FlxColor.BLACK
+    );
 
-		// Paths.clearMemory();
+    chartStatsTxt.scrollFactor.set();
+    chartStatsTxt.borderSize = 1;
+    add(chartStatsTxt);
 
-		#if desktop
+    if (PlayState.SONG != null)
+        _song = PlayState.SONG;
+    else
+    {
+        Difficulty.resetList();
+
+        _song = {
+            song: 'Test',
+            notes: [],
+            events: [],
+            bpm: 150.0,
+            needsVoices: true,
+            player1: 'bf',
+            player2: 'dad',
+            gfVersion: 'gf',
+            speed: 1,
+            stage: 'stage'
+        };
+        addSection();
+        PlayState.SONG = _song;
+    }
+    updateChartStats();
+
+    // Paths.clearMemory();
+
+	#if desktop
 		// Updating Discord Rich Presence
 		DiscordClient.changePresence("Chart Editor", StringTools.replace(_song.song, '-', ' '));
 		#end
