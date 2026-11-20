@@ -2,9 +2,9 @@
 <h1 align="center">
   <br>
   <img src="assets/logo.png" alt="Rhyps Engine" width="150">
-> super cool logo!!!
   <br>
 </h1>
+> super cool logo!!1!1
 <h3 align="center">
   <b>Rhyps Engine (or Psych4ever) is an super modified Friday Night Funkin' Psych Engine Base engine based in JS Engine and H-Slice focused on performance, customization, spamtracks and charters.</b>
 </h3>
