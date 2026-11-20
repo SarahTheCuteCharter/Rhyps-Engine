@@ -5,6 +5,8 @@
   <br>
 </h1>
 super coolest logo!!!
+
+# About the Engine
 <h3 align="center">
   <b>Rhyps Engine (or Psych4ever) is an super modified Friday Night Funkin' Psych Engine Base engine based in JS Engine and H-Slice focused on performance, customization, spamtracks (best for Dave and Bambi spamtracks) and charters.</b>
 </h3>
@@ -75,7 +77,7 @@ We're using the [Psych Engine v0.71h](https://github.com/beihu235/Psych-Engine-0
 # Awards/Achievements
 The engine comes with 16 example achievements that you can mess with and learn how it works (Check Achievements.hx and search for "checkForAchievement" on PlayState.hx)
 
-## Options menu
+# Options menu
 You can change Note colors, Delay and Combo Offset, Controls and Preferences there.
 On Preferences you can toggle Downscroll, Middlescroll, Anti-Aliasing, Framerate, Low Quality, Note Splashes, Flashing Lights, etc.
 
@@ -87,7 +89,7 @@ On Preferences you can toggle Downscroll, Middlescroll, Anti-Aliasing, Framerate
 * You can listen to a song or adjust Scroll Speed/Damage taken/etc. on Freeplay by pressing Space.
 * You can enable "Combo Stacking" in Gameplay Options. This causes the combo sprites to just be one sprite with an animation rather than sprites spawning each note hit.
 
-## Supported Languages
+# Supported Languages
 * **Haxe** — Main engine language.
 * **Lua** — Official scripting language.
 * **JavaScript** — Additional planned scripting support.
@@ -100,13 +102,13 @@ On Preferences you can toggle Downscroll, Middlescroll, Anti-Aliasing, Framerate
 * **Pelicirihu's Top Charts**: Collection of Sanduiche-Plays's Harder and Impossibles Charts.
 * **Dave and Dave Charts**: SarahTheCharter's Extreme Dave Charts
 
-## This is a fork repo by beihu235 and them contributors!, the team is respecting the work of beihu and contributors for made the psych engine for android.
+# This is a fork repo by beihu235 and them contributors!, the team is respecting the work of beihu and contributors for made the psych engine for android.
 
 <p align="center">
   <img src="https://img.shields.io/badge/Psych_Engine-8A2BE2?style=for-the-badge"
 </p>
 
-## Documentation
+# Documentation
 * [Installation Guide](docs/installation.md)
 * [Chart Editor](docs/chart-editor.md)
 * [Modding Guide](docs/modding.md)
@@ -116,7 +118,7 @@ On Preferences you can toggle Downscroll, Middlescroll, Anti-Aliasing, Framerate
 * [Changelog](CHANGELOG.md)
 * [Contributors](docs/the-gang.md)
 
-# the Contribution Guys
+## the Contribution Guys
 <a href="https://github.com/SarahTheCuteCharter/Rhyps-Engine/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=SarahTheCuteCharter/Rhyps-Engine" />
 </a>
