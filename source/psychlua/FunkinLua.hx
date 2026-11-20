@@ -66,6 +66,15 @@ class FunkinLua {
 	#end
 
 	public var scriptCode:String;
+	
+	#if (!flash && sys)
+	public static var runtimeShaders:Map<String, FlxRuntimeShader> =
+		new Map<String, FlxRuntimeShader>();
+	#else
+	public static var runtimeShaders:Map<String, Dynamic> =
+		new Map<String, Dynamic>();
+	#end
+		
 	public var callbacks:Map<String, Dynamic> = new Map<String, Dynamic>();
 	public static var customFunctions:Map<String, Dynamic> = new Map<String, Dynamic>();
 	public function new(scriptName:String, ?scriptCode:String) {
