@@ -194,7 +194,7 @@ class ChartingState extends MusicBeatState
 	private var blockPressWhileTypingOnStepper:Array<FlxUINumericStepper> = [];
 	private var blockPressWhileScrolling:Array<FlxUIDropDownMenu> = [];
 
-	var waveformSprite:FlxSprite;
+    var waveformSprite:FlxSprite;
 	var gridLayer:FlxTypedGroup<FlxSprite>;
 
 	public static var quantization:Int = 16;
@@ -213,11 +213,10 @@ class ChartingState extends MusicBeatState
 		96,
 		192
 	];
-
+	
 	var text:String = "";
 	public static var vortex:Bool = false;
 	public var mouseQuant:Bool = false;
-	{
 		if (PlayState.SONG != null)
 			_song = PlayState.SONG;
 		else
