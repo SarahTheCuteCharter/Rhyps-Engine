@@ -9,11 +9,13 @@ super coolest logo!!!
   <b>Rhyps Engine (or Psych4ever) is an super modified Friday Night Funkin' Psych Engine Base engine based in JS Engine and H-Slice focused on performance, customization, spamtracks (best for Dave and Bambi spamtracks) and charters.</b>
 </h3>
 <h2 align="center">
-  Languages used:
+  Languages used and Available Platforms:
 </h2>
 <p align="center">
   <img src="https://img.shields.io/badge/Haxe-EA8220?style=for-the-badge&logo=haxe&logoColor=white" alt="Haxe">
   <img src="https://img.shields.io/badge/Lua-000080?style=for-the-badge&logo=lua&logoColor=white" alt="Lua">
+  <img
+src="https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white" alt="Android"
 </p>
 <p align="center">
   Haxe is for all engine files, like options mode, loading screen, freeplay, story mode and much more.
