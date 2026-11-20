@@ -31,6 +31,32 @@ import backend.Mods;
 
 class Paths
 {
+#if MODS_ALLOWED
+	public static var mods(get, never):Dynamic;
+
+	private static function get_mods():Dynamic
+	{
+		return {
+			getTopMod: function():String
+			{
+				return Mods.currentModDirectory;
+			},
+			folders: function(path:String):Array<String>
+			{
+				var folders:Array<String> = [];
+
+				if(Mods.currentModDirectory != null && Mods.currentModDirectory.length > 0)
+					folders.push(SUtil.getPath() + "mods/" + Mods.currentModDirectory + "/" + path);
+
+				for(mod in Mods.getGlobalMods())
+					folders.push(SUtil.getPath() + "mods/" + mod + "/" + path);
+
+				return folders;
+			}
+		};
+	}
+#end
+	
 	inline public static var SOUND_EXT = #if web "mp3" #else "ogg" #end;
 	inline public static var VIDEO_EXT = "mp4";
 
