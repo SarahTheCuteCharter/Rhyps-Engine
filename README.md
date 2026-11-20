@@ -2,10 +2,11 @@
 <h1 align="center">
   <br>
   <img src="assets/logo.png" alt="Rhyps Engine" width="150">
+> super cool logo!!!
   <br>
 </h1>
 <h3 align="center">
-  <b>Rhyps Engine (or Psych4ever) is an modified Friday Night Funkin' Psych Engine Base engine focused on performance, customization and creative freedom.</b>
+  <b>Rhyps Engine (or Psych4ever) is an super modified Friday Night Funkin' Psych Engine Base engine based in JS Engine and H-Slice focused on performance, customization, spamtracks and charters.</b>
 </h3>
 <h2 align="center">
   Languages used:
@@ -15,9 +16,9 @@
   <img src="https://img.shields.io/badge/Lua-000080?style=for-the-badge&logo=lua&logoColor=white" alt="Lua">
 </p>
 <p align="center">
-  We use Haxe for all engine files, like options mode, loading screen, freeplay, story mode and much more.
+  Haxe is for all engine files, like options mode, loading screen, freeplay, story mode and much more.
   <br>
-  And we use .lua to create scripts, events, backgrounds, and much more to make the game look better.
+  And .lua to create scripts, events, backgrounds, and much more to make the game look better.
 </p>
 
 # Base
@@ -29,7 +30,7 @@ We're using the [Psych Engine v0.71h](https://github.com/beihu235/Psych-Engine-0
 * **Advanced Botplay** — Support for highly complex charts.
 * **Custom Content** — Characters, stages, events and HUD elements.
 * **Shader Support** — Custom visual effects and stage shaders.
-* **Multilanguage Scripting** — Expandable scripting architecture.
+* **JavaScript Language** — Expandable scripting architecture.
 * **Debug Tools**  — Development logs and performance diagnostics.
 * **Expanded Modding** — More flexibility for mod creators.
 * **Android Compatibility** — Support of the first Rhyps Engine.
@@ -45,7 +46,10 @@ We're using the [Psych Engine v0.71h](https://github.com/beihu235/Psych-Engine-0
 * **Developer Console** — Additional debugging information and development utilities.
 * **Cross-Mod Compatibility** — Improved support for different mod structures and custom content.
 * **Mobile Interface Optimization** — Interface improvements designed for Android devices.
-<b> AND, MOREEEEEEE!! </b>
+# AND, MOREEEEEEE!!
+
+> [!NOTE]
+> Some features will be added in the future, while ```chartStats```, ```spammySection``` and ```engineSettings``` are already added.
 
 # Credits
 * **Shadow Mario** - Programmer
@@ -78,10 +82,11 @@ On Preferences you can toggle Downscroll, Middlescroll, Anti-Aliasing, Framerate
 * You can listen to a song or adjust Scroll Speed/Damage taken/etc. on Freeplay by pressing Space.
 * You can enable "Combo Stacking" in Gameplay Options. This causes the combo sprites to just be one sprite with an animation rather than sprites spawning each note hit.
 
-## Supported Languages (Planned)
+## Supported Languages
 * **Haxe** — Main engine language.
 * **Lua** — Official scripting language.
-* **Python, JavaScript, C++ and C#** — Additional scripting support.
+* **JavaScript** — Additional planned scripting support.
+> we will no adding python, c++ and c#, why do you do that sarah?
 
 ## Rhyps Engine Stuff's (PLANNED)
 * **RhypsEngine-Bridge**: Planned system for connecting scripting languages with engine functions.
