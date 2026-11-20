@@ -1575,48 +1575,47 @@ class FunkinLua {
 	{
 		if(!ClientPrefs.data.shaders) return false;
 
-		if(runtimeShaders.exists(name))
-		{
-			FlxG.log.warn('Shader $name was already initialized!');
+		if (runtimeShaders.exists(name)) {
+			luaTrace('Shader $name already initialized!');
 			return true;
 		}
 
 		var foldersToCheck:Array<String> = [Mods.currentModDirectory('shaders/')];
-		if(Mods.currentModDirectory != null && Mods.currentModDirectory.length > 0)
-			foldersToCheck.insert(0, Mods.currentModDirectory(Mods.currentModDirectory + '/shaders/'));
 
-		for(mod in Mods.getGlobalMods())
+		#if MODS_ALLOWED
+			if (Mods.currentModDirectory != null && Mods.currentModDirectory.length > 0)
+				foldersToCheck.insert(0, Mods.currentModDirectory('shaders/'));
+		
+		for (mod in Mods.getGlobalMods())
 			foldersToCheck.insert(0, Mods.currentModDirectory(mod + '/shaders/'));
+		#end
+			for (folder in foldersToCheck) {
+				if (FileSystem.exists(folder)) {
+					var frag:String = folder + name + '.frag';
+					var vert:String = folder + name + '.vert';
+					var found:Bool = false;
 
-		for (folder in foldersToCheck)
-		{
-			if(FileSystem.exists(folder))
-			{
-				var frag:String = folder + name + '.frag';
-				var vert:String = folder + name + '.vert';
-				var found:Bool = false;
-				if(FileSystem.exists(frag))
-				{
-					frag = File.getContent(frag);
-					found = true;
-				}
-				else frag = null;
+					if (FileSystem.exists(frag)) {
+						frag = File.getContent(frag);
+						found = true;
+					} else frag = null;
 
-				if (FileSystem.exists(vert))
-				{
-					vert = File.getContent(vert);
-					found = true;
-				}
-				else vert = null;
+					if (FileSystem.exists(vert)) {
+						vert = File.getContent(vert);
+						found = true;
+					} else vert = null;
 
-				if(found)
-				{
-					runtimeShaders.set(name, [frag, vert]);
-					//trace('Found shader $name!');
-					return true;
-				}
-			}
+					if (found) {
+						#if (!flash && sys)
+							var shader:FlxRuntimeShader = new FlxRuntimeShader(frag, vert);
+						runtimeShaders.set(name, shader);
+						#else
+							runtimeShaders.set(name, [frag, vert]);
+						#end
+			return true;
 		}
+	}
+}
 		FlxG.log.warn('Missing shader $name .frag AND .vert files!');
 		return false;
 	}
