@@ -4,9 +4,9 @@
   <img src="assets/logo.png" alt="Rhyps Engine" width="150">
   <br>
 </h1>
-> super cool logo!!1!1
+super coolest logo!!!
 <h3 align="center">
-  <b>Rhyps Engine (or Psych4ever) is an super modified Friday Night Funkin' Psych Engine Base engine based in JS Engine and H-Slice focused on performance, customization, spamtracks and charters.</b>
+  <b>Rhyps Engine (or Psych4ever) is an super modified Friday Night Funkin' Psych Engine Base engine based in JS Engine and H-Slice focused on performance, customization, spamtracks (best for Dave and Bambi spamtracks) and charters.</b>
 </h3>
 <h2 align="center">
   Languages used:
@@ -20,6 +20,9 @@
   <br>
   And .lua to create scripts, events, backgrounds, and much more to make the game look better.
 </p>
+
+> [!WARNING]
+> The Engine is TEST-ONLY and super errors, lagging and more can show in the gameplay.
 
 # Base
 We're using the [Psych Engine v0.71h](https://github.com/beihu235/Psych-Engine-0.71h-android) by beihu256 as a base and have improved it even further! We have new mechanics, features, and tools throughout the game. Follow along and see the details below.
@@ -95,7 +98,7 @@ On Preferences you can toggle Downscroll, Middlescroll, Anti-Aliasing, Framerate
 * **Pelicirihu's Top Charts**: Collection of Sanduiche-Plays's Harder and Impossibles Charts.
 * **Dave and Dave Charts**: SarahTheCharter's Extreme Dave Charts
 
-## This is a fork repo by beihu235 and them contributors!
+## This is a fork repo by beihu235 and them contributors!, the team is respecting the work of beihu and contributors for made the psych engine for android.
 
 <p align="center">
   <img src="https://img.shields.io/badge/Psych_Engine-8A2BE2?style=for-the-badge"
@@ -117,3 +120,5 @@ On Preferences you can toggle Downscroll, Middlescroll, Anti-Aliasing, Framerate
 </a>
 
 Made with [contrib.rocks](https://contrib.rocks).
+
+> where DerickAugusto???????
