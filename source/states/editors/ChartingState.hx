@@ -217,9 +217,7 @@ class ChartingState extends MusicBeatState
 	var text:String = "";
 	public static var vortex:Bool = false;
 	public var mouseQuant:Bool = false;
-		if (PlayState.SONG != null)
-			_song = PlayState.SONG;
-		else
+}
 	if (PlayState.SONG != null)
 		_song = PlayState.SONG;
 	else
