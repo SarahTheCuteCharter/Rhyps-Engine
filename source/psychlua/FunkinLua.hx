@@ -1581,12 +1581,12 @@ class FunkinLua {
 			return true;
 		}
 
-		var foldersToCheck:Array<String> = [Paths.mods('shaders/')];
+		var foldersToCheck:Array<String> = [Mods.currentModDirectory('shaders/')];
 		if(Mods.currentModDirectory != null && Mods.currentModDirectory.length > 0)
-			foldersToCheck.insert(0, Paths.mods(Mods.currentModDirectory + '/shaders/'));
+			foldersToCheck.insert(0, Mods.currentModDirectory(Mods.currentModDirectory + '/shaders/'));
 
 		for(mod in Mods.getGlobalMods())
-			foldersToCheck.insert(0, Paths.mods(mod + '/shaders/'));
+			foldersToCheck.insert(0, Mods.currentModDirectory(mod + '/shaders/'));
 
 		for (folder in foldersToCheck)
 		{
