@@ -1,5 +1,5 @@
 # Modding Guide
-NKL-4ever Engine aims to provide a flexible environment for creating, customizing and sharing Friday Night Funkin' mods.
+Rhyps Engine aims to provide a flexible environment for creating, customizing and sharing Friday Night Funkin' mods.
 
 ## Mod Structure
 
@@ -16,20 +16,17 @@ A mod may contain different types of resources, including:
 
 ## Scripting Languages
 
-NKL-4ever plans to support multiple scripting languages:
+The Engine plans to support javascript language:
 
 * Haxe: Main engine language.
 * Lua: Official scripting language.
-* Python: Planned additional scripting support.
 * JavaScript: Planned additional scripting support.
-* C++: Planned additional scripting support.
-* C#: Planned additional scripting support.
   
 (obs: This language choice is made via the terminal; if not made, .lua will be the language of the scripts you create.)
 
-## NKL-Bridge
+## Rhyps-Engine-Bridge
 
-NKL-Bridge is a planned system designed to connect supported scripting languages with engine functions. Its purpose is to expand modding possibilities and provide greater flexibility for developers.
+Rhyps-Engine-Bridge is a planned system designed to connect supported scripting languages with engine functions. Its purpose is to expand modding possibilities and provide greater flexibility for developers.
 
 ## Custom Content
 
