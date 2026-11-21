@@ -1571,54 +1571,67 @@ class FunkinLua {
 	#if (MODS_ALLOWED && !flash && sys)
 	public var runtimeShaders:Map<String, Array<String>> = new Map<String, Array<String>>();
 	#end
-	public function initLuaShader(name:String)
+	public function initLuaShader(name:String):Bool
 	{
-		if(!ClientPrefs.data.shaders) return false;
+		if (!ClientPrefs.data.shaders) return false;
 
-		if (runtimeShaders.exists(name)) {
-			luaTrace('Shader $name already initialized!');
-			return true;
-		}
+		if (runtimeShaders.exists(name))
+    {
+        luaTrace('Shader $name already initialized!');
+        return true;
+    }
+    var foldersToCheck:Array<String> = [Paths.mods('shaders/')];
 
-		var foldersToCheck:Array<String> = [Mods.currentModDirectory('shaders/')];
+    #if MODS_ALLOWED
+    if (Mods.currentModDirectory != null && Mods.currentModDirectory.length > 0)
+        foldersToCheck.insert(0, Paths.mods(Mods.currentModDirectory + '/shaders/'));
 
-		#if MODS_ALLOWED
-			if (Mods.currentModDirectory != null && Mods.currentModDirectory.length > 0)
-				foldersToCheck.insert(0, Mods.currentModDirectory('shaders/'));
-		
-		for (mod in Mods.getGlobalMods())
-			foldersToCheck.insert(0, Mods.currentModDirectory(mod + '/shaders/'));
-		#end
-			for (folder in foldersToCheck) {
-				if (FileSystem.exists(folder)) {
-					var frag:String = folder + name + '.frag';
-					var vert:String = folder + name + '.vert';
-					var found:Bool = false;
+    var globalMods:Array<String> = cast Mods.getGlobalMods();
+    for (mod in globalMods)
+        foldersToCheck.insert(0, Paths.mods(mod + '/shaders/'));
+    #end
 
-					if (FileSystem.exists(frag)) {
-						frag = File.getContent(frag);
-						found = true;
-					} else frag = null;
+    for (folder in foldersToCheck)
+    {
+        if (!FileSystem.exists(folder)) continue;
 
-					if (FileSystem.exists(vert)) {
-						vert = File.getContent(vert);
-						found = true;
-					} else vert = null;
+		var frag:String = folder + name + '.frag';
+        var vert:String = folder + name + '.vert';
+        var found:Bool = false;
 
-					if (found) {
-						#if (!flash && sys)
-							var shader:FlxRuntimeShader = new FlxRuntimeShader(frag, vert);
-						runtimeShaders.set(name, shader);
-						#else
-							runtimeShaders.set(name, [frag, vert]);
-						#end
-			return true;
-		}
-	}
+        if (FileSystem.exists(frag))
+        {
+            frag = File.getContent(frag);
+            found = true;
+        }
+        else
+        {
+            frag = null;
+        }
+
+        if (FileSystem.exists(vert))
+        {
+            vert = File.getContent(vert);
+            found = true;
+        }
+        else
+        {
+			vert = null;
+        }
+
+        if (found)
+        {
+            runtimeShaders.set(name, [frag, vert]);
+            return true;
+        }
+    }
+
+    FlxG.log.warn('Missing shader $name .frag AND .vert files!');
+    return false;
 }
 		FlxG.log.warn('Missing shader $name .frag AND .vert files!');
 		return false;
-	}
+}
 
 	public var lastCalledFunction:String = '';
 	public static var lastCalledScript:FunkinLua = null;
